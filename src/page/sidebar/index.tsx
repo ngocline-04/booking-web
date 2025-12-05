@@ -57,7 +57,7 @@ const SideBar = () => {
           onClick={() => window.location.reload()}
           className="flex justify-center items-center"
         >
-          <ImageSvgLocal width="60px" name="LogoPvcombank" />
+          {/* <ImageSvgLocal width="60px" name="LogoPvcombank" /> */}
           {isCheckSidebar && (
             <Typography className="cursor-pointer">Sport Web</Typography>
           )}
