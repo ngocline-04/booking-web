@@ -59,7 +59,7 @@ const SideBar = () => {
         >
           <ImageSvgLocal width="60px" name="LogoPvcombank" />
           {isCheckSidebar && (
-            <Typography className="cursor-pointer">Pvcombank</Typography>
+            <Typography className="cursor-pointer">Sport Web</Typography>
           )}
         </Box>
         {userInfo === "INACTIVE" ? (
