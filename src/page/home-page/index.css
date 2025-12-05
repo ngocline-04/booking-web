@@ -1,0 +1,62 @@
+/* wrapper to lớn */
+.big-switch.ant-switch {
+  width: 180px !important;
+  height: 50px !important;
+  line-height: 50px !important; /* cho chữ nằm giữa */
+  border-radius: 50px !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important; /* ensure vertical center */
+  justify-content: center !important; /* optional: center horizontally */
+}
+
+/* handle chính */
+.big-switch .ant-switch-handle {
+  width: 44px !important;
+  height: 44px !important;
+  top: 3px !important;
+  left: 3px !important;               /* nếu AntD dùng left */
+  transform: none !important;         /* huỷ transform mặc định để left có tác dụng */
+  border-radius: 50% !important;      /* ensure circle */
+  -webkit-border-radius: 50% !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
+  border: none !important;
+  overflow: visible !important;
+  display: block !important;
+}
+
+/* nếu AntD dùng transform để di chuyển handle khi toggle (phiên bản khác) */
+.big-switch.ant-switch-checked .ant-switch-handle {
+  left: calc(180px - 44px - 3px) !important;
+  transform: none !important;
+}
+
+
+
+/* xử lý pseudo-element nếu có */
+.big-switch .ant-switch-handle::before,
+.big-switch .ant-switch-handle::after {
+  content: "" !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* inner chứa chữ */
+.big-switch .ant-switch-inner {
+  font-size: 32px !important;
+  font-weight:600
+}
+
+.custom-select .ant-select-selector {
+  border-width: 0 !important;
+  box-shadow: none !important; /* bỏ focus outline */
+  height: 44px !important;
+  border-radius: 16px !important;
+}
