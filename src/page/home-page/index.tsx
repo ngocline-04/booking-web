@@ -49,11 +49,11 @@ const Component = () => {
     onCancelDetail,
     isLogin,
     isRegister,
-    _openLogin,
     onCancelLogin,
     _openRegister,
     onCancelRegister,
     onNavigateBooking,
+    onBooking,
   } = useHome();
 
   return (
@@ -353,7 +353,7 @@ const Component = () => {
               className="h-40 w-full text-color-50 font-medium mt-16"
               style={{ backgroundColor: "#0056BD" }}
               type="text"
-              onClick={() => _openLogin()}
+              onClick={onBooking}
             >
               Đặt Sân
             </Button>

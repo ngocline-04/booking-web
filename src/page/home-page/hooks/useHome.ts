@@ -14,10 +14,12 @@ import {
   ic_tennis,
   ic_volleyball,
 } from "@/assets/image";
+import { getUserInfo } from "@/store/login";
 import { Form } from "antd";
 import dayjs from "dayjs";
-import { get } from "lodash";
+import { get, isEmpty } from "lodash";
 import { useCallback, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const useHome = () => {
@@ -45,6 +47,7 @@ export const useHome = () => {
   const [isRegister, setRegister] = useState(false);
   const navigate = useNavigate();
 
+  const { userInfo } = useSelector(getUserInfo);
   const _openLogin = useCallback(() => {
     setIsLogin(true);
     setIsOpenDetail(false);
@@ -180,6 +183,15 @@ export const useHome = () => {
     }
   }, []);
 
+  const onBooking = useCallback(async () => {
+    if (isEmpty(userInfo)) {
+      _openLogin();
+      return;
+    }
+    onNavigateBooking();
+    onCancelDetail();
+  }, [userInfo]);
+
   const onCancelDetail = () => {
     setIsOpenDetail(false);
   };
@@ -187,7 +199,11 @@ export const useHome = () => {
   const onNavigateBooking = useCallback(() => {
     const data = formDate.getFieldsValue();
 
-    navigate(`/booking-page?date=${dayjs(data?.date).format('YYYY-MM-DD')}&id_schedule=${data?.time}`);
+    navigate(
+      `/booking-page?date=${dayjs(data?.date || new Date()).format(
+        "YYYY-MM-DD"
+      )}&id_schedule=${data?.time || 1}`
+    );
   }, [formDate]);
 
   return {
@@ -224,5 +240,6 @@ export const useHome = () => {
     onCancelRegister,
     navigate,
     onNavigateBooking,
+    onBooking,
   };
 };
