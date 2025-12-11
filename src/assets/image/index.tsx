@@ -9,7 +9,7 @@ import ic_volleyball from "./ic-volleyball.png";
 import ic_tennis from "./ic-tennis.png";
 import yard from './yard.png'
 import ic_partner from './ic-partner.png'
-
+import ic_qr_payment from './QR.png'
 export {
   cover_home,
   ic_badminton,
@@ -21,4 +21,5 @@ export {
   ic_volleyball,
   yard,
   ic_partner,
+  ic_qr_payment
 };

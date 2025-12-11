@@ -27,6 +27,7 @@ export const useBookingPage = () => {
   const { userInfo } = useSelector(getUserInfo);
 
   const [booking, setIsBooking] = useState(false);
+  const [method, setMethod] = useState()
 
   const _openLogin = useCallback(() => {
     setIsLogin(true);
@@ -149,5 +150,7 @@ console.log("schedule:", schedule);
     setIsBooking,
     booking,
     onCreate,
+    method,
+    setMethod
   };
 };

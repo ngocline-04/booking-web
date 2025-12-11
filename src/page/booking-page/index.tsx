@@ -1,6 +1,6 @@
-import { cover_home, yard } from "@/assets/image";
+import { cover_home, ic_qr_payment, yard } from "@/assets/image";
 import MyDatePicker from "@/components/basic/date-picker";
-import { Button, Col, Form, Modal, Row, Select } from "antd";
+import { Button, Col, Form, Modal, Radio, Row, Select } from "antd";
 import { memo } from "react";
 import { useBookingPage } from "./hooks/useBookingPage";
 import { ItemField } from "@/components/item-field";
@@ -29,7 +29,9 @@ const Component = () => {
     onCancelLogin,
     onBooking,
     booking,
-    onCreate
+    onCreate,
+    method,
+    setMethod,
   } = useBookingPage();
 
   const { userInfo } = useSelector(getUserInfo);
@@ -148,17 +150,47 @@ const Component = () => {
               <div className="font-semibold">
                 Giờ đặt: {dayjs().format("DD/MM/YYYY HH:mm:ss")}
               </div>
+
+              <div className="flex flex-col mt-16">
+                <Radio.Group
+                  //value={method}
+                  style={{ display: "flex", flexDirection: "column" }}
+                  onChange={(event) => setMethod(event.target.value)}
+                  options={[
+                    { value: 1, label: "Thanh toán qua QR" },
+                    { value: 2, label: "Thanh toán sau" },
+                  ]}
+                />
+                {method === 1 && (
+                  <div className="mt-16">
+                    Vui lòng chuẩn bị sẵn sàng ứng dụng thanh toán QR để quá
+                    trình thanh toán diễn ra nhanh chóng.
+                    <div className="flex justify-center mt-16">
+                      <img
+                        src={ic_qr_payment}
+                        alt=""
+                        style={{
+                          width: 150,
+                          height: 150,
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
-            <Button
-            className="h-40 text-color-50 font-medium mt-16"
-            style={{ backgroundColor: "#0056BD" }}
-            type="text"
-            onClick={onCreate}
-          >
-            Đặt sân
-          </Button>
+
+            {method != 1 && method ? (
+              <Button
+                className="h-40 text-color-50 font-medium mt-16"
+                style={{ backgroundColor: "#0056BD" }}
+                type="text"
+                onClick={onCreate}
+              >
+                Đặt sân
+              </Button>
+            ) : null}
           </div>
-          
         </div>
       ) : (
         <div className="p-24 overflow-y-auto grid grid-cols-4 gap-24 pb-32">
